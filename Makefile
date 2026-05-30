@@ -10,7 +10,7 @@ CONTAINER := p1-build
 OPENWRT_DIR := /home/builder/openwrt
 CACHE_DIR := $(PWD)/.cache
 
-CONFIGS ?= custom/configs/common.config custom/configs/tr.config
+CONFIGS ?= configs/mt7981.config
 MAKE_JOBS ?= $(shell nproc)
 MAKE_OPTS ?= V=s
 
