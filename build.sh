@@ -81,6 +81,10 @@ prepare() {
         echo "[1-4/7] No custom directory, skipping patches and devices"
     fi
 
+    # radcli install-exec-hook uses `ln -s` (not -sf); a stale symlink in the
+    # cached build_dir makes it fail on rebuild. Force a clean rebuild.
+    rm -rf "$OPENWRT_DIR"/build_dir/target-*/radcli-*
+
     echo "[5/7] Updating feeds..."
     "$OPENWRT_DIR"/scripts/feeds update -a
     "$OPENWRT_DIR"/scripts/feeds install -a
